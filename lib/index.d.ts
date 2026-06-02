@@ -81,4 +81,4 @@ interface VivaeServer {
 
 declare function vivae(config?: VivaeConfig): VivaeServer;
 
-export = vivae;
+export { vivae, VivaeServer, VivaeConfig, Middleware, Method, VivaeObject };

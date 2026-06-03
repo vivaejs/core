@@ -77,7 +77,7 @@ interface VivaeServer {
   use(method: Method | Method[], middleware: Middleware): void;
   use(middleware: Middleware): void;
 
-  listen(port: number, callback?: () => void): void;
+  listen(port?: number, callback?: () => void): void;
 }
 
 declare function vivae(config?: VivaeConfig): VivaeServer;

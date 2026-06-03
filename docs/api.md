@@ -47,17 +47,17 @@ The route handler defines how your HTTP server handles each path and it's assosi
 - `PATH` (optional): Defines what path on the server to apply to, you can leave it empty to apply to all paths. Supports:
   - Static Paths: e.g. `/`, `/about`
   - Parameterized paths: e.g. `/user/:id`, `/blog/:post_id`
-    - Accessible through [`vobj.params`](#params)
+    - Accessible through [`v.params`](#params)
   - Strict Wildcards `*`: Matches **one or more segments**
   - Dual Wildcards `%` | `**`: Matches **zero or more segments**
 - `METHOD` (optional): The HTTP method, not case sensitive, so it doesn't need to be capitalized. It also supports an array of methods if you want to apply the request to multiple types. See [all HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods). Defaults to all HTTP methods if it's not given.
-- `MIDDLEWARE` (required): A function that allows you to write middleware, includes `vobj` object.
+- `MIDDLEWARE` (required): A function that allows you to write middleware, includes `v` object.
 
 ### Example
 
 ```javascript
-[server].use(["GET", "POST"], "/about", (vobj) => {
-  vobj.send("Hello World!");
+[server].use(["GET", "POST"], "/about", (v) => {
+  v.send("Hello World!");
 });
 ```
 
@@ -67,7 +67,7 @@ The Vivae Object (`v`) is a unified version of Node.js's `req` and `res` only av
 
 ```javascript
 [server].use((v) => {
-  // vobj can be used here
+  // Vivae Object can be used here
 });
 ```
 
@@ -92,8 +92,8 @@ Access the parameters from the current request parsed into an object.
 Get the current request method. Changing it doesn't rewrite the method sent to the server.
 
 ```javascript
-[server].use("/", "GET", (vobj) => {
-  vobj.send(vobj.method); // "GET"
+[server].use("/", "GET", (v) => {
+  v.send(v.method); // "GET"
 });
 ```
 
@@ -104,15 +104,15 @@ Allows you to send status codes to the browser of the current request.
 Example:
 
 ```javascript
-vobj.status = 404;
+v.status = 404;
 ```
 
 ### `.send()`
 
-Using `vobj.send()` allows you to decide what to send the server. It accepts one argument like this:
+Using `v.send()` allows you to decide what to send the server. It accepts one argument like this:
 
 ```javascript
-vobj.send(BODY);
+v.send(BODY);
 ```
 
 - `BODY`: Can be a string or an object, Vivae will parse the object into JSON and change the `Content-Type` header automatically.
@@ -120,13 +120,13 @@ vobj.send(BODY);
 Example:
 
 ```javascript
-vobj.send("Hello world!");
+v.send("Hello world!");
 ```
 
 ### `.next()`
 
 ```javascript
-vobj.next(ERROR);
+v.next(ERROR);
 ```
 
 ### `.setHeaders()`
@@ -134,7 +134,7 @@ vobj.next(ERROR);
 Adds headers to the current request.
 
 ```javascript
-vobj.setHeaders({ HEADER: VALUE, ... })
+v.setHeaders({ HEADER: VALUE, ... })
 ```
 
 - `HEADER`: The header's name/key.
@@ -143,7 +143,7 @@ vobj.setHeaders({ HEADER: VALUE, ... })
 Example:
 
 ```javascript
-vobj.setHeaders({ "Content-Type": "application/json" });
+v.setHeaders({ "Content-Type": "application/json" });
 ```
 
 ### `.respond()`
@@ -153,7 +153,7 @@ Combines `.status` and `.setHeaders()` into one, allowing you to make your code 
 Example:
 
 ```javascript
-vobj.respond(200, { "Content-Type": "application/json" });
+v.respond(200, { "Content-Type": "application/json" });
 ```
 
 ## Server Listener - `[server]`.listen

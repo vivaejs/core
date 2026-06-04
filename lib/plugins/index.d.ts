@@ -1,4 +1,4 @@
-import type { VivaeServer, Middleware, Method } from "./index";
+import type { VivaeServer, Middleware, Method } from "../index";
 
 export interface Plugin {
   plugin: true;

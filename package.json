@@ -18,9 +18,9 @@
       "types": "./lib/index.d.ts"
     },
     "./plugins": {
-      "require": "./lib/plugins.js",
-      "import": "./lib/plugins.js",
-      "types": "./lib/plugins.d.ts"
+      "require": "./lib/plugins/index.js",
+      "import": "./lib/plugins/index.js",
+      "types": "./lib/plugins/index.d.ts"
     }
   },
   "scripts": {

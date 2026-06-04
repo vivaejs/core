@@ -65,6 +65,7 @@ interface VivaeServer {
   use(method: Method | Method[], middleware: Middleware): void;
   use(middleware: Middleware): void;
 
+  fetch: (request: Request) => Promise<Response>;
   listen(port?: number, callback?: () => void): void;
 }
 

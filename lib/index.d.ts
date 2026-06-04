@@ -29,14 +29,6 @@ type Method =
   | "ACL"
   | "SEARCH";
 
-type Event = {
-  data: (chunk: Buffer | string) => void;
-  end: () => void;
-  error: (error: Error) => void;
-  close: () => void;
-  aborted: () => void;
-};
-
 interface VivaeObject {
   url: string;
   path: string;
@@ -54,13 +46,9 @@ interface VivaeObject {
     status?: number;
     headers?: { [key: string]: string };
   }): this;
-
-  on<E extends keyof Event>(event: E, listener: Event[E]): this;
-  once<E extends keyof Event>(event: E, listener: Event[E]): this;
-  off<E extends keyof Event>(event: E, listener: Event[E]): this;
 }
 
-type Middleware = ((vobj: VivaeObject) => void);
+type Middleware = (vobj: VivaeObject) => void;
 
 interface VivaeConfig {
   debug?: {

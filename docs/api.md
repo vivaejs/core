@@ -220,7 +220,8 @@ app.use(serve(OPTIONS));
 ### Example
 
 ```javascript
-serve("public", {
+serve({
+  directory: "public",
   autoEncoding: false,
   headers: {
     ".unityweb": {

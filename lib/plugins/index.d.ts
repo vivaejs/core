@@ -1,14 +1,9 @@
-import type { Middleware, Method } from "../index";
-
-export interface Plugin {
-  path?: string;
-  method?: Method;
-  middleware: Middleware;
-}
+import type { Plugin } from "../index";
 
 export function serve(options?: {
   directory?: string;
   autoEncoding?: boolean;
+  runtime?: "node" | "serverless" | "deno" | "bun";
   headers?: {
     [fileExtension: string]: {
       [header: string]: string;

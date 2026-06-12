@@ -10,3 +10,5 @@ export function serve(options?: {
     };
   };
 }): Plugin;
+
+export function logging(): Plugin;

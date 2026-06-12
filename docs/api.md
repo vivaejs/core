@@ -203,9 +203,12 @@ const app = vivae();
 app.plugin(serve(OPTIONS));
 ```
 
+> This plugin does not support Edge runtimes, use Cloudflare R2, or AWS S3.
+
 - `OPTIONS` (optional): You can pass an object to change how static serving behaves.
   - `.directory` (optional): The directory of your choice to serve publicly. Defaults to "public".
   - `.autoEncoding` (optional): Detect Gzip encoding in files automatically. Brotli is not supported because it doesn't have a magic number in it's buffer for detection.
+  - `.runtime` (optional): Set your server runtime, defaults to "node"
   - `.headers` (optional): Decide what headers to apply depending on the file extension. This plugin applies defaults so you can only change or add to what it's currently set to.
 
 ### Example

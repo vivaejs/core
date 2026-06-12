@@ -203,6 +203,7 @@ const app = vivae();
 app.plugin(serve(OPTIONS));
 ```
 
+> [!WARNING]
 > This plugin does not support Edge runtimes, use Cloudflare R2, or AWS S3.
 
 - `OPTIONS` (optional): You can pass an object to change how static serving behaves.
